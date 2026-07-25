@@ -1,9 +1,9 @@
-# IGUS ReBeL — Autonomous Red-Box Sorter
+# IGUS ReBeL - Autonomous Red-Box Sorter
 
-Course project (New Industrial Technologies — XR / Autonomous Robotics, SRH).
+Course project (New Industrial Technologies - XR / Autonomous Robotics, SRH).
 A downward-facing camera detects **red boxes** on a table; on an MQTT start
 message the IGUS ReBeL robot detects them, picks the closest first, and stacks
-them at a storage location — fully autonomously, with a live OpenCV view.
+them at a storage location - fully autonomously, with a live OpenCV view.
 
 Flow: **candle pose** (detect, arm out of view) → **L pose** → pick nearest →
 place/stack → back to **candle**.
@@ -34,13 +34,13 @@ cd igus-rebel-red-box-sorter
 
 ### 2b. Create the conda environment
 
-**Option A — from the environment file (recommended):**
+**Option A - from the environment file (recommended):**
 ```bash
 conda env create -f environment.yml
 conda activate xr-igus
 ```
 
-**Option B — manually:**
+**Option B - manually:**
 ```bash
 conda create -n xr-igus python=3.11
 conda activate xr-igus
@@ -48,7 +48,7 @@ pip install -r requirements.txt
 ```
 
 Packages installed: `numpy`, `opencv-python`, `paho-mqtt==1.6.1`
-(paho pinned to 1.x — the code uses the v1 callback API).
+(paho pinned to 1.x - the code uses the v1 callback API).
 
 ### 2c. Verify everything (no robot motion)
 ```bash
@@ -56,7 +56,7 @@ python check_setup.py
 ```
 Checks packages, `config.json`, the camera, and robot/broker reachability.
 
-## 3. Configure — `config.json`
+## 3. Configure - `config.json`
 
 Everything tunable lives here. Key fields:
 
@@ -65,7 +65,7 @@ Everything tunable lives here. Key fields:
 | `robot` | `host` / `port` | robot controller address (`192.168.3.11:3920`) |
 | `robot` | `gripper_vacuum_dout` / `gripper_blowoff_dout` | suction ON channel / blow-off release channel |
 | `robot` | `gripper_delay` | seconds to wait for seal / release |
-| `camera` | `source` | camera index (0, 1, 2 …) — the overhead cam |
+| `camera` | `source` | camera index (0, 1, 2 …) - the overhead cam |
 | `vision` | `method` | `"color"` (red HSV detection) |
 | `vision` | **`hsv_lower` / `hsv_upper`** | **the red colour range (see §5)** |
 | `vision` | `min_area_px` | smallest blob accepted as a box |
@@ -73,7 +73,7 @@ Everything tunable lives here. Key fields:
 | `task` | `box_height` | stack step per level |
 | `mqtt` | `host` / `port` / topics | broker + start/status topics |
 
-## 4. Run — step by step
+## 4. Run - step by step
 
 Do the one-time tuning/calibration first, then run.
 
@@ -100,20 +100,20 @@ run (places each box back where picked), or publish an MQTT start message
 **Keys** (with the OpenCV window focused): `t` start · `o`/`c` gripper open/close
 · `q` quit.
 
-## 5. The red colour — where it's defined
+## 5. The red colour - where it's defined
 
 Detection keys on **hue**, which makes it robust to shadow and ground:
 
 - **`config.json` → `vision.hsv_lower` / `hsv_upper`** is the red definition.
-  - **H** (hue) — red wraps the 0/180 seam, so H min is HIGH (~170) and H max
+  - **H** (hue) - red wraps the 0/180 seam, so H min is HIGH (~170) and H max
     LOW (~10); the detector reads that as the red band on both ends
-  - **S min** (saturation floor) — set high so only *vivid* red passes; this
+  - **S min** (saturation floor) - set high so only *vivid* red passes; this
     is what makes the **ground not matter** (dull wood is low-saturation)
-  - **V** (value/brightness) — kept wide so **red in shadow** still counts
+  - **V** (value/brightness) - kept wide so **red in shadow** still counts
 - `vision.method: "color"` selects the colour detector (`BoxDetector` in
   `vision.py`), which applies the range with `cv2.inRange`.
 
-Retune anytime with `python color_tuner.py` — it writes back to those keys, so
+Retune anytime with `python color_tuner.py` - it writes back to those keys, so
 you never edit code. To detect a **different** colour, just center the H sliders
 on that colour's hue.
 
@@ -137,13 +137,13 @@ on that colour's hue.
 ## 7. Notes & troubleshooting
 
 - **MQTT ports:** the Python code uses plain MQTT on **1883**; the HiveMQ
-  *browser* client uses WebSocket **8884**. Both reach the same broker — keep
+  *browser* client uses WebSocket **8884**. Both reach the same broker - keep
   each on its own port. (The code auto-corrects 8884→1883 for safety.)
 - **Robot unreachable / connection timeout:** check the robot is powered and on
   the same network; `ping 192.168.3.11`. Keep Ethernet on the robot LAN and
   Wi-Fi for internet if you need both.
 - **Cup lands off-centre on far boxes:** re-calibrate with points spread to the
   corners; click box *tops* to cancel parallax.
-- **Box won't release:** the vacuum holds via a check valve — release is a
+- **Box won't release:** the vacuum holds via a check valve - release is a
   blow-off pulse on `gripper_blowoff_dout`.
 - **Keys do nothing:** click the OpenCV window first (not the terminal).
