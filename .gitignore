@@ -6,6 +6,10 @@ __pycache__/
 # local runtime artifacts (regenerated per setup)
 background.png
 
+# local demo working files (published through a GitHub README attachment)
+demo/*.mp4
+demo/*.jpg
+
 # editor / OS
 .vscode/
 .idea/

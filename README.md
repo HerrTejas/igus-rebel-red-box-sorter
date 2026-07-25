@@ -10,9 +10,9 @@ place/stack → back to **candle**.
 
 ## Demo video
 
-[![Watch the IGUS ReBeL autonomous red-box sorting demo](demo/igus-rebel-demo-poster.jpg)](demo/igus-rebel-demo-2.5x.mp4)
+https://github.com/user-attachments/assets/d3e6acc5-1288-49dd-a2eb-49f110200a37
 
-*Click the preview to watch the 2.5× speed demo (57 seconds).*
+*Accelerated autonomous red-box sorting demo (18 seconds).*
 
 ---
 
