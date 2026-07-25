@@ -1,0 +1,13 @@
+# python
+__pycache__/
+*.pyc
+*.pyo
+
+# local runtime artifacts (regenerated per setup)
+background.png
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

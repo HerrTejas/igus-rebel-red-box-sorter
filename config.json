@@ -1,0 +1,70 @@
+{
+    "robot": {
+        "host": "192.168.3.11",
+        "port": 3920,
+        "vel_travel": 90.0,
+        "vel_approach": 90.0,
+        "detect_pose_joint": {
+            "A1": 90.0,
+            "A3": 90.0,
+            "A5": 90.0
+        },
+        "gripper_mode": "single",
+        "gripper_vacuum_dout": 31,
+        "gripper_blowoff_dout": 30,
+        "gripper_open_dout": 31,
+        "gripper_close_dout": 32,
+        "gripper_delay": 1.5
+    },
+    "camera": {
+        "source": 1,
+        "width": 640,
+        "height": 480
+    },
+    "vision": {
+        "method": "color",
+        "roi": null,
+        "rectangularity_min": 0.8,
+        "hsv_lower": [
+            170,
+            110,
+            70
+        ],
+        "hsv_upper": [
+            10,
+            255,
+            255
+        ],
+        "min_area_px": 204,
+        "max_area_px": 100000,
+        "stable_samples": 15,
+        "match_radius_px": 40,
+        "min_hit_ratio": 0.6
+    },
+    "task": {
+        "safe_z": 360.0,
+        "pick_z": 146.0,
+        "place_z_first": 185.0,
+        "box_height": 50.0,
+        "tool_down": {
+            "A": 180.0,
+            "B": 0.0,
+            "C": 180.0
+        },
+        "transit_via_L": true,
+        "storage_square_mm": 50.0,
+        "expected_boxes": 4,
+        "default_storage": {
+            "X": 337.0,
+            "Y": 263.0
+        }
+    },
+    "mqtt": {
+        "host": "mqtt-dashboard.com",
+        "port": 1883,
+        "topic_sort": "igus/arm/robot0/sort",
+        "topic_status": "igus/arm/robot0/status"
+    },
+    "calibration_file": "calibration.json",
+    "background_file": "background.png"
+}

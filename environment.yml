@@ -1,0 +1,10 @@
+name: xr-igus
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - numpy
+      - opencv-python
+      - paho-mqtt==1.6.1   # pin 1.x: course examples use the old callback API
