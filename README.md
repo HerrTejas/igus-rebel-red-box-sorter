@@ -8,6 +8,12 @@ them at a storage location — fully autonomously, with a live OpenCV view.
 Flow: **candle pose** (detect, arm out of view) → **L pose** → pick nearest →
 place/stack → back to **candle**.
 
+## Demo video
+
+[![Watch the IGUS ReBeL autonomous red-box sorting demo](demo/igus-rebel-demo-poster.jpg)](demo/igus-rebel-demo-2.5x.mp4)
+
+*Click the preview to watch the 2.5× speed demo (57 seconds).*
+
 ---
 
 ## 1. Requirements
@@ -127,7 +133,6 @@ on that colour's hue.
 | `test_camera.py` / `test_robot.py` / `test_gripper.py` | Subsystem tests |
 | `mqtt_test.py` | Standalone MQTT round-trip test |
 | `environment.yml` / `requirements.txt` | Environment definition |
-| `course.html` | Background course/theory guide |
 
 ## 7. Notes & troubleshooting
 
