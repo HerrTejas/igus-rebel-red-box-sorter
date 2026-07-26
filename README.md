@@ -14,6 +14,13 @@ https://github.com/user-attachments/assets/d3e6acc5-1288-49dd-a2eb-49f110200a37
 
 *Accelerated autonomous red-box sorting demo (18 seconds).*
 
+## Acknowledgements
+
+This project was developed as part of the New Industrial Technologies course
+(XR / Autonomous Robotics) at SRH. The original `igus.py` robot-control module
+was developed by Lukasz Rojek for the course and was extended for this project
+with gripper control and more robust motion-completion handling.
+
 ---
 
 ## 1. Requirements

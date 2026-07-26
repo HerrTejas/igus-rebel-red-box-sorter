@@ -1,19 +1,19 @@
 """
-Robot driver for the IGUS ReBeL over the CRI protocol (TCP socket).
+This module provides a Python interface for controlling the IGUS robot.
+It includes classes for representing joint positions, generating commands, and managing the connection to the robot.
 
-Based on the course module by Lukasz Rojek (lukasz.rojek@srh.de), extended for
-the final project with:
-  - digital output control (CMD DOUT) for the gripper
-  - tolerance-based "motion finished" detection with timeout instead of
-    exact float equality
-  - gripper_open() / gripper_close() helpers (channels from config)
+It allows users to connect to the robot, send commands to move joints, and receive status updates.
 
-The CRI protocol in one line: every message is a plain ASCII string
-    CRISTART <id> <TYPE> <payload...> CRIEND
-sent over a TCP socket to the robot controller (port 3920). The controller
-answers with periodic STATUS messages containing the current joint and
-cartesian position, which we parse in a background thread.
+It is just a basic implementation and can be extended with more features as needed.
+
+Author: Lukasz Rojek (lukasz.rojek@srh.de)
 """
+
+# Final-project extensions:
+# - digital output control (CMD DOUT) for the gripper
+# - tolerance-based motion-finished detection with a timeout
+# - gripper_open() and gripper_close() helpers configured through config.json
+
 import socket
 import threading
 import time
