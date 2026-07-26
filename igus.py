@@ -9,10 +9,8 @@ It is just a basic implementation and can be extended with more features as need
 Author: Lukasz Rojek (lukasz.rojek@srh.de)
 """
 
-# Final-project extensions:
-# - digital output control (CMD DOUT) for the gripper
-# - tolerance-based motion-finished detection with a timeout
-# - gripper_open() and gripper_close() helpers configured through config.json
+# The original module was extended for this project with gripper control and
+# more robust motion-completion handling.
 
 import socket
 import threading
