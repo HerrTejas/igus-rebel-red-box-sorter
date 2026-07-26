@@ -21,9 +21,9 @@ This project was developed as part of the New Industrial Technologies course
 concept was defined by the lecturer as the final examination assignment for
 the course.
 
-The course provided the foundations for the CRI, motion control, MQTT, and
-computer vision components. These were further extended with own solutions
-developed specifically for this project.
+The course provided the foundations for the CRI, motion control, and MQTT
+components. These were further extended with own solutions developed
+specifically for this project.
 
 ---
 
